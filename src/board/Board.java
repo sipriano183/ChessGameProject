@@ -50,7 +50,7 @@ public class Board {
 	// This will place a piece at the given row and column, through the array
 	// defined here. It will also change the piece's position.
 	public void placePiece(Piece piece, Position position) {
-		if(thereIsAPiece(position) ) {
+		if(thereIsAPiece(position)) {
 			throw new BoardException("Position already taken by another piece");
 		}
 		pieces[position.getRow()][position.getColumn()] = piece;
@@ -71,7 +71,7 @@ public class Board {
 	// This will check if the specified position isn't null, like it is made by
 	// default. It must be modified by the placePiece method
 	public boolean thereIsAPiece(Position position) {
-		if(!positionExists(position) ) {
+		if(!positionExists(position)) {
 			throw new BoardException("Inexistent position.");
 		}
 		return piece(position) != null;
