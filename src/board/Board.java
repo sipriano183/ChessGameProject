@@ -42,6 +42,12 @@ public class Board {
 		
 	}
 	
+	// This will place a piece at the given row and column, through the array defined here. It will also change the piece's position.
+	public void placePiece(Piece piece, Position position) {
+		pieces[position.getRow()][position.getColumn()] = piece;
+		piece.position = position;
+	}
+	
 	
 
 }
