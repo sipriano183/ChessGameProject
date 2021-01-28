@@ -30,6 +30,18 @@ public class Board {
 		this.columns = columns;
 	}
 	
+	// Returns a piece set at the written row and column
+	public Piece piece(int row, int column) {
+		return pieces[row][column];
+		
+	}
+	
+	// Returns a piece at the set position
+	public Piece piece(Position position) {
+		return pieces[position.getRow()][position.getColumn()];
+		
+	}
+	
 	
 
 }

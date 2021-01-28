@@ -11,11 +11,10 @@ public class Piece {
 		this.board = board;
 	}
 
-	// Get method should not be visible by the game layer since its for internal use
+	// Get method should not be visible by the game layer
 	protected Board getBoard() {
 		return board;
 	}
-	
 	
 
 }
