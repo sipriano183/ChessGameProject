@@ -1,6 +1,9 @@
 package chess;
 
 import board.Board;
+import board.Piece;
+import board.Position;
+import chess.exceptions.ChessException;
 import chess.pieces.King;
 import chess.pieces.Rook;
 
@@ -40,6 +43,30 @@ public class ChessMatch {
         placeNewPiece('e', 7, new Rook(board, Color.BLACK));
         placeNewPiece('e', 8, new Rook(board, Color.BLACK));
         placeNewPiece('d', 8, new King(board, Color.BLACK));	
+	}
+	
+	// Moves a chess piece from a source position to a target position and creates a captured piece if there is one.
+	public ChessPiece performChessMove(ChessPosition sourcePosition, ChessPosition targetPosition) {
+		Position source = sourcePosition.toPosition();
+		Position target = targetPosition.toPosition();
+		validateSourcePosition(source);
+		Piece capturedPiece = makeMove(source, target);
+		return (ChessPiece)capturedPiece;
+	}
+	
+	// This logic captures a piece when a piece gets captured through a move
+	private Piece makeMove(Position source, Position target) {
+		Piece p = board.removePiece(source);
+		Piece capturedPiece = board.removePiece(target);
+		board.placePiece(p, target);
+		return capturedPiece;
+	}
+	
+	// Validates the piece before the user can make a move
+	private void validateSourcePosition(Position position) {
+		if (!board.thereIsAPiece(position)) {
+			throw new ChessException("There is no piece in selected position.");
+		}
 	}
 	
 	// With this method we will be able to place pieces according to a normal chess game pattern.

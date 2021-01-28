@@ -56,6 +56,20 @@ public class Board {
 		pieces[position.getRow()][position.getColumn()] = piece;
 		piece.position = position;
 	}
+	
+	// This method removes a piece, it declares a piece's position as null and then removes it from the array.
+	public Piece removePiece(Position position) {
+		if(!positionExists(position)) {
+			throw new BoardException("Invalid position");
+		}
+		if(piece(position) == null) {
+			return null;
+		}
+		Piece aux = piece(position);
+		aux.position = null;
+		pieces[position.getRow()][position.getColumn()] = null;
+		return aux;
+	}
 
 	// This method will check if the position is true, if it is more than 0 and less
 	// than the rows/columns it will return true
@@ -77,5 +91,6 @@ public class Board {
 		return piece(position) != null;
 
 	}
+	
 
 }
