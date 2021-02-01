@@ -51,7 +51,7 @@ public class Board {
 	// defined here. It will also change the piece's position.
 	public void placePiece(Piece piece, Position position) {
 		if(thereIsAPiece(position)) {
-			throw new BoardException("Position already taken by another piece.");
+			throw new BoardException("Position already taken by another piece");
 		}
 		pieces[position.getRow()][position.getColumn()] = piece;
 		piece.position = position;
@@ -60,7 +60,7 @@ public class Board {
 	// This method removes a piece, it declares a piece's position as null and then removes it from the array.
 	public Piece removePiece(Position position) {
 		if(!positionExists(position)) {
-			throw new BoardException("Invalid position.");
+			throw new BoardException("Invalid position");
 		}
 		if(piece(position) == null) {
 			return null;
