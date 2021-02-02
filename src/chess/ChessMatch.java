@@ -65,7 +65,7 @@ public class ChessMatch {
 	// Validates the piece before the user can make a move
 	private void validateSourcePosition(Position position) {
 		if (!board.thereIsAPiece(position)) {
-			throw new ChessException("There is no piece in selected position.");
+			throw new ChessException("There is no piece on source position");
 		}
 	}
 	
