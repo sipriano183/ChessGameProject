@@ -2,6 +2,7 @@ package chess;
 
 import board.Board;
 import board.Piece;
+import board.Position;
 
 public abstract class ChessPiece extends Piece {
 	
@@ -16,6 +17,13 @@ public abstract class ChessPiece extends Piece {
 	
 	public Color getColor() {
 		return color;
+	}
+	
+	// This method checks if there is an opponent piece on the piece's possible moves, it does that by checking the colors
+	protected boolean isThereOpponentPiece(Position position) {
+		ChessPiece p = (ChessPiece)getBoard().piece(position);
+		return p != null && p.getColor() != color;
+		
 	}
 	
 	

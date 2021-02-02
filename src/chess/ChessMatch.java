@@ -54,6 +54,7 @@ public class ChessMatch {
 		Position source = sourcePosition.toPosition();
 		Position target = targetPosition.toPosition();
 		validateSourcePosition(source);
+		validateTargetPosition(source, target);
 		Piece capturedPiece = makeMove(source, target);
 		return (ChessPiece) capturedPiece;
 	}
@@ -76,6 +77,13 @@ public class ChessMatch {
 			throw new ChessException("There are no possible moves for the chosen piece.");
 		}
 	}
+	
+	private void validateTargetPosition(Position source, Position target) {
+		if (!board.piece(source).possibleMove(target)) {
+			throw new ChessException("Chosen piece cannot move to chosen destination.");
+		}
+	}
+	
 
 	// With this method we will be able to place pieces according to a normal chess
 	// game pattern.
