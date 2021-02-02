@@ -1,6 +1,8 @@
 package game;
 
+import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
 import chess.ChessMatch;
@@ -16,6 +18,7 @@ public class App {
 		// This will initiate a new ChessMatch, which will create a new game Board and
 		// will print it through the UI.
 		ChessMatch chessMatch = new ChessMatch();
+		List<ChessPiece> captured = new ArrayList<>();
 
 		// This while loop keeps the program running and executes the moves according to
 		// the source and target
@@ -23,7 +26,7 @@ public class App {
 		while (true) {
 			try {
 				UI.clearScreen();
-				UI.printMatch(chessMatch);
+				UI.printMatch(chessMatch, captured);
 				System.out.println();
 				System.out.print("Source: ");
 				ChessPosition source = UI.readChessPosition(sc);
@@ -37,6 +40,11 @@ public class App {
 				ChessPosition target = UI.readChessPosition(sc);
 
 				ChessPiece capturedPiece = chessMatch.performChessMove(source, target);
+				
+				// Whenever a captured piece returns true (a piece gets captured) it will add it to the list
+				if (capturedPiece != null) {
+					captured.add(capturedPiece);
+				}
 			}
 
 			catch (ChessException e) {
