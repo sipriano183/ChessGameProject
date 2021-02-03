@@ -61,6 +61,11 @@ public class UI {
 		System.out.println();
 		System.out.println("Turn: " + chessMatch.getTurn());
 		System.out.println("Waiting for " + chessMatch.getCurrentPlayer() + " player");
+		
+		// This informs the players that a king is on check
+		if(chessMatch.getCheck()) {
+			System.out.println("CHECK!");
+		}
 	}
 
 	// This method prints the board without any coloration in the background
