@@ -23,7 +23,7 @@ public class App {
 		// This while loop keeps the program running and executes the moves according to
 		// the source and target
 
-		while (true) {
+		while (!chessMatch.getCheckMate()) {
 			try {
 				UI.clearScreen();
 				UI.printMatch(chessMatch, captured);
@@ -57,6 +57,9 @@ public class App {
 				sc.nextLine();
 			}
 		}
+		
+		UI.clearScreen();
+		UI.printMatch(chessMatch, captured);
 
 	}
 }
